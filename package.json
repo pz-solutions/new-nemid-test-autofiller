@@ -1,6 +1,10 @@
 {
-  "name": "nemid-vue2",
-  "version": "0.2.0",
+  "name": "new-nemid-test-autofiller",
+  "repository": {
+    "type": "github",
+    "url": "git@github.com:pz-solutions/new-nemid-test-autofiller.git"
+  },
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service build --mode development --watch",

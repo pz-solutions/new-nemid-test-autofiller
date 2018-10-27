@@ -16,7 +16,7 @@
         label="Name"
         width="140">
         <template slot-scope="scope">
-          <el-input v-if="scope.row" v-model="scope.row.name" placeholder="Name"></el-input>
+          <el-input v-if="scope.row" v-model.lazy="scope.row.name" placeholder="Name" @change="save"></el-input>
         </template>
       </el-table-column>
       <el-table-column
@@ -24,7 +24,7 @@
         label="Password"
         width="140">
         <template slot-scope="scope">
-          <el-input v-if="scope.row" v-model="scope.row.password" placeholder="Password"></el-input>
+          <el-input v-if="scope.row" v-model.lazy="scope.row.password" placeholder="Password" @change="save"></el-input>
         </template>
       </el-table-column>
       <el-table-column
@@ -37,7 +37,7 @@
     </el-table>
     <el-row justify="center">
       <el-col>
-        <el-button type="primary" @click="submitForm">Save</el-button>
+        <el-button type="primary" @click="submitForm">Close</el-button>
       </el-col>
     </el-row>
   </el-form>
@@ -101,11 +101,12 @@ export default {
       } else {
         this.selected = id;
       }
+      save();
     },
     isSelected(id) {
       return this.selected === id;
     },
-    submitForm() {
+    save(callback){
       const item = this.cprs.filter(o => o && o.id === this.selected)[0];
       chrome.storage.local.set(
         {
@@ -113,20 +114,23 @@ export default {
           cprs: this.cprs
         },
         () => {
-          this.setIcon(item, () => {
-            window.close();
-          });
+          this.setIcon(item, callback);
         }
       );
+
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    submitForm() {
+      this.save(() => {
+            window.close();
+          });
     },
+
     removeUser(item) {
       var index = this.cprs.indexOf(item);
       if (index !== -1) {
         this.cprs.splice(index, 1);
       }
+      this.save();
     },
     addUser() {
       const next =
@@ -138,6 +142,7 @@ export default {
         name: "",
         password: ""
       });
+      this.save();
     }
   }
 };

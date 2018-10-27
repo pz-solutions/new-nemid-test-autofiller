@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "New NemID Test Autofiller",
-  "homepage_url": "http://localhost/",
-  "description": "A Vue Browser Extension",
+  "homepage_url": "https://pz-solutions.pl/new-nemid-test-autofiller",
+  "description": "Autofiller for danish test nemid",
   "icons": {
     "128": "icons/icon-128.png",
     "48": "icons/icon-48.png",
