@@ -1,0 +1,37 @@
+{
+  "manifest_version": 2,
+  "name": "New NemID Test Autofiller",
+  "homepage_url": "http://localhost/",
+  "description": "A Vue Browser Extension",
+  "icons": {
+    "128": "icons/icon-128.png",
+    "48": "icons/icon-48.png",
+    "32": "icons/icon-32.png",
+    "16": "icons/icon-16.png"
+  },
+  "permissions": [
+    "storage",
+    "https://appletk.danid.dk/*"
+  ],
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "NemID",
+    "default_icon": {
+      "128": "icons/icon-128.png",
+      "48": "icons/icon-48.png",
+      "32": "icons/icon-32.png",
+      "16": "icons/icon-16.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": [ "https://appletk.danid.dk/launcher/*" ],
+      "js": ["content_scripts/content-script.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "css/fonts/*.woff",
+    "css/fonts/*.ttf"
+  ]
+}
