@@ -1,7 +1,7 @@
 module.exports = {
   pages: {
-    'popup/popup': {
-      entry: 'src/popup/popup.js',
+    'popup': {
+      entry: 'src/main.js',
       title: 'Popup'
     }
   },
@@ -15,8 +15,8 @@ module.exports = {
       componentOptions: {
         contentScripts: {
           entries: {
-            'content_scripts/content-script': [
-              'src/content_scripts/content-script.js'
+            'content-script': [
+              'src/content-script.js'
             ]
           }
         }

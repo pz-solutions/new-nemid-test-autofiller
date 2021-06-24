@@ -1,5 +1,4 @@
 import $ from "jquery";
-
 if (
   window.location.href.substring(0, 37) ==
     "https://appletk.danid.dk/launcher/std" ||
@@ -40,7 +39,7 @@ function getOptCardCode(cardSerial, keyCode, callback) {
     },
     error: function(xhr, tst, err) {
       console.log("XHR ERROR:", xhr.status);
-    }
+    },
   });
 }
 function FillOptCardCodeOld() {
@@ -66,7 +65,7 @@ function FillOptCardCodeOld() {
     } else {
       FillOptCardCodeOld();
     }
-  }, 100);
+  }, 1500);
 }
 function FillOptCardCodeNew() {
   setTimeout(function() {
@@ -86,7 +85,7 @@ function FillOptCardCodeNew() {
     } else {
       FillOptCardCodeNew();
     }
-  }, 100);
+  }, 1500);
 }
 function ResolveOldNemIdLogin(ntaf) {
   setTimeout(function() {
@@ -104,7 +103,7 @@ function ResolveOldNemIdLogin(ntaf) {
     } else {
       ResolveOldNemIdLogin(ntaf);
     }
-  }, 100);
+  }, 1500);
 }
 
 function ResolveNewNemIdLogin(ntaf) {
@@ -123,5 +122,5 @@ function ResolveNewNemIdLogin(ntaf) {
     } else {
       ResolveNewNemIdLogin(ntaf);
     }
-  }, 100);
+  }, 1500);
 }
