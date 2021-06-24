@@ -4,7 +4,7 @@
     "type": "github",
     "url": "git@github.com:pz-solutions/new-nemid-test-autofiller.git"
   },
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service build --mode development --watch",

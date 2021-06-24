@@ -37,9 +37,9 @@ function getOptCardCode(cardSerial, keyCode, callback) {
       console.log("NemID Code:", cardSerial, keyCode, key);
       callback(key);
     },
-    error: function(xhr, tst, err) {
+    error: function(xhr) {
       console.log("XHR ERROR:", xhr.status);
-    },
+    }
   });
 }
 function FillOptCardCodeOld() {
@@ -56,7 +56,7 @@ function FillOptCardCodeOld() {
     var keyCode = keyCodeLabel[0] && keyCodeLabel[0].innerText;
     if (keyCode && kcEncoded) {
       getOptCardCode(kcEncoded, keyCode, function(key) {
-        $(".PIN").each(function(index) {
+        $(".PIN").each(function() {
           console.log(this, key);
           $(this).val(key);
         });
@@ -77,7 +77,7 @@ function FillOptCardCodeNew() {
     var keyCode = $(".otp__frame__cell").text();
     if (keyCode && kcEncoded) {
       getOptCardCode(kcEncoded, keyCode, function(key) {
-        $(".otp-input").each(function(index) {
+        $(".otp-input").each(function() {
           $(this).val(key);
         });
         $(".button--submit").click();

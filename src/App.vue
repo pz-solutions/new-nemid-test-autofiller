@@ -61,7 +61,6 @@
     </el-row>
   </el-form>
 </template>
-
 <script>
 const enabledIcon128 = "/icons/icon-128.png";
 const enabledIcon48 = "/icons/icon-48.png";
@@ -74,10 +73,10 @@ const disabledIcon16 = "/icons/icon-16-disabled.png";
 export default {
   data: () => ({
     cprs: null,
-    selected: null,
+    selected: null
   }),
   mounted() {
-    chrome.storage.local.get(["ntaf", "cprs"], (items) => {
+    chrome.storage.local.get(["ntaf", "cprs"], items => {
       const ntaf = items["ntaf"];
       const cprs = items["cprs"];
       this.cprs = cprs || [{ id: 0, name: "", password: "" }, null];
@@ -94,8 +93,8 @@ export default {
               128: enabledIcon128,
               48: enabledIcon48,
               32: enabledIcon32,
-              16: enabledIcon16,
-            },
+              16: enabledIcon16
+            }
           },
           callback
         );
@@ -106,8 +105,8 @@ export default {
               128: disabledIcon128,
               48: disabledIcon48,
               32: disabledIcon32,
-              16: disabledIcon16,
-            },
+              16: disabledIcon16
+            }
           },
           callback
         );
@@ -125,11 +124,11 @@ export default {
       return this.selected === id;
     },
     save(callback) {
-      const item = this.cprs.filter((o) => o && o.id === this.selected)[0];
+      const item = this.cprs.filter(o => o && o.id === this.selected)[0];
       chrome.storage.local.set(
         {
           ntaf: item || null,
-          cprs: this.cprs,
+          cprs: this.cprs
         },
         () => {
           this.setIcon(item, callback);
@@ -153,15 +152,14 @@ export default {
       const next =
         this.cprs.length === 1
           ? 0
-          : Math.max(...this.cprs.filter((o) => o).map((o) => o.id)) + 1;
+          : Math.max(...this.cprs.filter(o => o).map(o => o.id)) + 1;
       this.cprs.splice(this.cprs.length - 1, 0, {
         id: next,
         name: "",
-        password: "",
+        password: ""
       });
       this.save();
-    },
-  },
+    }
+  }
 };
 </script>
-
