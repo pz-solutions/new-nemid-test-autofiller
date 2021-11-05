@@ -23,7 +23,7 @@
   "content_scripts": [
     {
       "all_frames": true,
-      "matches": ["https://appletk.danid.dk/launcher/*"],
+      "matches": ["https://appletk.danid.dk/launcher/lmt/*"],
       "js": ["content-script.js"]
     }
   ]
